@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PublisherController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\BookMemberController;
 
 // Homepage
@@ -36,3 +37,25 @@ Route::prefix('books/{book}')->group(function () {
     Route::put('members/{member}', [BookMemberController::class, 'update'])->name('book_members.update');
     Route::delete('members/{member}', [BookMemberController::class, 'destroy'])->name('book_members.destroy');
 });
+
+
+
+
+Route::middleware('guest')
+    ->group(function () {
+        Route::get('login', [LoginController::class, 'create'])->name('login');
+        Route::post('login', [LoginController::class, 'store']);
+    });
+
+Route::middleware('auth')
+    ->group(function () {
+        Route::post('logout', [LoginController::class, 'destroy'])->name('logout');
+    });
+
+Route::middleware('auth')
+    ->group(function () {
+        Route::controller(BookController::class)
+            ->group(function () {
+                Route::get('', 'index')->name('home');
+            });
+    });

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Add New Publisher')
+
 @section('content')
     <div class="container">
         <h1>Add Publisher</h1>
