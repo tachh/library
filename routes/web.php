@@ -10,7 +10,7 @@ use App\Http\Controllers\BookMemberController;
 
 // Homepage
 Route::get('/', function () {
-    return view('books.index');
+    return view('welcome');
 });
 
 // Book routes
