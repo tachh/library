@@ -2,10 +2,10 @@
 
 @section('content')
     <div class="container">
-        <h1>Publishers</h1>
-
-        <a href="{{ route('publishers.create') }}" class="btn btn-primary mb-3">Add New Publisher</a>
-
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>Publishers</h1>
+            <a href="{{ route('publishers.create') }}" class="btn btn-primary mb-3">Add New Publisher</a>
+        </div>
         @if(session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
         @endif
